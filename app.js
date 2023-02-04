@@ -55,10 +55,16 @@ function stopWatch() {
     leadingHours + ":" + leadingMinutes + ":" + leadingSeconds);
 }
 
-//
+// guma hamwe nd
 startStopBtn.addEventListener("click", function () {
+  //
+
   if (timerStatus === "stopped") {
     timerInterval = window.setInterval(stopWatch, 1000);
+    // startStopBtn.removeEventListener("click", () => {
+    //   timerStatus = "started";
+    // });
+
     document.getElementById(
       "startStopBtn"
     ).innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" id="pause">
@@ -80,6 +86,15 @@ startStopBtn.addEventListener("click", function () {
       clip-rule="evenodd"
     />
   </svg>`;
+    timerStatus = "stopped";
   }
-  timerStatus = "stopped";
+});
+
+resetBtn.addEventListener("click", function () {
+  window.clearInterval(timerInterval);
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
+
+  document.getElementById("timer").innerHTML = "00:00:00";
 });
